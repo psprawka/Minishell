@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 20:38:32 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/10 21:32:50 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/11 17:10:12 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		env_setup(char **environ)
 			//free array
 			return (EXIT_FAILURE);
 		}
+		printf("g_shell.environ[i]: \"%s\"\n", g_shell.environ[i]);
 		i++;
 	}
 	return (EXIT_SUCCESS);
