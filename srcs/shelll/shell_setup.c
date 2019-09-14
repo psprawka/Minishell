@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 21:02:06 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/11 22:06:54 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/14 12:56:41 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 t_shell	g_shell;
 
+
+
 static int  v_environ_setup(char **envp)
 {
     int     i;
     int     size;
     
-    if ((size = ft_2Darr_size()) == -1 ||
+    if ((size = ft_2Darr_size(envp)) == -1 ||
         !(g_shell.environ = (char **)malloc(sizeof(char *) * size + 1)))
         return (EXIT_FAILURE);
-    
     i = 0;
     while (i < size)
     {
-        if (!(g_shell.environ[i] = ft_strcpy(g_shell.environ[i], envp[i])))
+        if (!(g_shell.environ[i] = ft_strncpy(envp[i], ft_strlen(envp[i]))))
         {
             //free arr
             return (EXIT_FAILURE);
@@ -43,6 +44,7 @@ static int  v_path_setup(void)
     char    **paths;
     int     index_path;
     
+    index_path = 0;
     while (g_shell.environ[index_path])
     {
         if (!(ft_strncmp(g_shell.environ[index_path], "PATH", 4)))  
@@ -50,10 +52,10 @@ static int  v_path_setup(void)
         index_path++;
     }
     if (!g_shell.environ[index_path] ||
-        !(paths = ft_strsplit_chr(g_shell.environ[index_path], ':')))
-        return (error(324, "wtf", EXIT_FAILURE));
+        !(paths = ft_strsplit_chr(&g_shell.environ[index_path][5], ':')))
+        return (error(0, "[v_path_setup]: failed to exctract path_env", EXIT_FAILURE));
     
-    g_shell.path = paths;
+    g_shell.env_path = paths;
     return (EXIT_SUCCESS);    
 }
 

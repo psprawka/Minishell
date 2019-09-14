@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 20:23:31 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/11 22:01:59 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/14 12:51:31 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,17 @@
 # include <dirent.h>
 # include "libft/libft.h"
 
-
-#define PATHS	g_shell.path;
+#define CMD_NAME    cmd_args[0]
+#define PATHS		g_shell.path;
 
 typedef struct	s_shell
 {
 	char    **environ;
 	int		environ_size;
-	
-	char	**path;
-	
+	char	**env_path;
 }				t_shell;
 
-
-
 extern t_shell	g_shell;
-
 
 int     display_prompt(void);
 int     get_input(char **input);
@@ -49,7 +44,8 @@ int		error(int errnb, char *msg, bool if_failure);
 */
 int     command_execute(char *cmd, char **cmd_args);
 char    *command_search_bins(char *cmd);
-int     handle_commands(char **cmds);
+int     handle_command(char *cmds);
+
 /*
 ** enviroment/
 */
