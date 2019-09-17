@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 20:23:31 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/14 12:51:31 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/17 22:24:03 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,13 @@ extern t_shell	g_shell;
 
 int     display_prompt(void);
 int     get_input(char **input);
-int		error(int errnb, char *msg, bool if_failure);
+char    **parse_input(char *input);
+int		error(int errnb, char *msg, int ret);
+
+/*
+** builtins/
+*/
+int				builtin_echo(char **args);
 
 /*
 ** command/
@@ -55,5 +61,8 @@ int		env_setup(char **environ);
 ** shell/
 */
 int     shell_setup(char **envp);
+void	shell_free(void);
+
+
 
 #endif

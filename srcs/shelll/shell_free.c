@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input.c                                            :+:      :+:    :+:   */
+/*   shell_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 21:16:02 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/17 21:27:27 by psprawka         ###   ########.fr       */
+/*   Created: 2019/09/17 21:34:36 by psprawka          #+#    #+#             */
+/*   Updated: 2019/09/17 22:25:00 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char    **parse_input(char *input)
+void	shell_free()
 {
-    char    **cmds;
-    
-    if (!input)
-        return (NULL);//(error(66, "meh", true));
-    cmds = ft_strsplit_chr(input, ';');
-    return (cmds);    
-}
-
-int     get_input(char **input)
-{
-    ft_get_next_line(STDIN_FILENO, input);
-    return (EXIT_SUCCESS);
+	ft_2Darr_free(g_shell.env_path);
+	ft_2Darr_free(g_shell.environ);
 }

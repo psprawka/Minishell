@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 12:35:13 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/14 12:49:33 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/17 22:24:51 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 int		builtin_exit(char **args)
 {
-	if (!args || ft_2Darr_size)
+	ft_2Darr_free(args);
+	return (EXIT_FAILURE);
 }

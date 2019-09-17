@@ -6,15 +6,11 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 21:02:06 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/14 12:56:41 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/15 23:04:34 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-t_shell	g_shell;
-
-
 
 static int  v_environ_setup(char **envp)
 {

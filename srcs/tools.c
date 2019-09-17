@@ -6,13 +6,13 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 21:13:55 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/14 08:59:58 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/17 22:12:58 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int			error(int errnb, char *msg, bool if_failure)
+int			error(int errnb, char *msg, int ret)
 {
 	if (errnb == 1)
 		printf("%sError: %s%s\n", RED, msg, NORMAL);
@@ -25,7 +25,7 @@ int			error(int errnb, char *msg, bool if_failure)
 	else
 		printf("%s%s: %s%s\n", RED, msg, strerror(errnb), NORMAL);
         
-	return (if_failure == true ? EXIT_FAILURE : EXIT_SUCCESS);
+	return (ret);
 }
 
 int     display_prompt(void)
