@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   command_execute.c                                  :+:      :+:    :+:   */
+/*   command_execute_bin.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 18:38:36 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/18 16:05:56 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/18 17:55:17 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,11 @@ int         command_execute_bin(char *cmd, char **cmd_args)
         if (find_path_execute(&path, cmd) == EXIT_FAILURE ||
             access(path, F_OK) == EXIT_FAILURE || 
             execve(path, cmd_args, g_shell.environ) == -1)
-            return (error(0, "[command_execute]", EXIT_FAILURE));
+            return (error(0, "[command_execute_bin]", EXIT_FAILURE));
         free(path);
     }
     else
         waitpid(pid, 0, 0);
+    ft_2Darr_free(cmd_args);
     return (EXIT_SUCCESS);
 }
