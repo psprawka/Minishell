@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 18:16:03 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/17 19:05:42 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/18 16:10:04 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int				builtin_echo(char **args)
 	
 	while (args[i])
 	{
-		ft_printf("%s", args[i][0] == '$' ? builtin_echo_env(args[i]) : args[i]);
+		printf("%s", args[i][0] == '$' ? builtin_echo_env(args[i]) : args[i]);
 		if (args[++i])
-			ft_printf(" ");
+			printf(" ");
 	}
 	if (is_newline)
-		ft_printf("\n"); 
+		printf("\n");
 	return (EXIT_SUCCESS);
 }

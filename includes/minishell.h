@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 20:23:31 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/17 22:24:03 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/18 16:06:02 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ int				builtin_echo(char **args);
 /*
 ** command/
 */
-int     command_execute(char *cmd, char **cmd_args);
-char    *command_search_bins(char *cmd);
+int     command_execute_bin(char *cmd, char **cmd_args);
 int     handle_command(char *cmds);
 
 /*
