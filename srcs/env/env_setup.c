@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_commands.c                                  :+:      :+:    :+:   */
+/*   env_setup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 21:13:11 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/18 17:55:03 by psprawka         ###   ########.fr       */
+/*   Created: 2019/09/10 20:38:32 by psprawka          #+#    #+#             */
+/*   Updated: 2019/09/19 22:00:45 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int     handle_command(char *cmd)
+int		env_setup(char **envp)
 {
-    char    **cmd_args;
-
-    if (!(cmd_args = ft_strsplit_chr(cmd, ' ')))
-        return (error(0, "[handle_command]", EXIT_FAILURE));
-    if (command_execute_builtin(CMD_NAME, cmd_args) == EXIT_SUCCESS)
-        return (EXIT_SUCCESS);
-    if (command_execute_bin(CMD_NAME, cmd_args) == EXIT_FAILURE)   
-        return (error(2, CMD_NAME, true));
-    return (EXIT_SUCCESS);
+	int		i;
+	int		len;
+	
+	i = 0;
+	while (envp[i])
+	{
+		len = ft_strlen(envp[i]);
+		if (!(g_shell.environ[i] = ft_strncpy(envp[i], len)))
+		{
+			g_shell.environ[i] = NULL;
+			ft_2Darr_free(g_shell.environ);
+			return (EXIT_FAILURE);
+		}
+		i++;
+	}
+	return (EXIT_SUCCESS);
 }

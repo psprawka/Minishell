@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 20:23:31 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/18 16:06:02 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/19 22:38:23 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,35 @@
 # include <dirent.h>
 # include "libft/libft.h"
 
+/*
+**  -> ENV_EXTENTION - defines how bigger than size g_shell.environ array is;
+**     this is done in order to avoid remalloc each time new variable is added.
+**     Let's say the size of the environ array equals 27 - an array will have
+**     27 + ENV_EXTENTION slots in array. When there are twice less variables as
+**     ENV_EXTENTION in g_shell.environ, array is remalloced to a smaller size.
+*/
 #define CMD_NAME    cmd_args[0]
-#define PATHS		g_shell.path;
+#define ENV_PATH	g_shell.path;
+#define	ENV_EXTENTION	10 
+#define	ENV_EMPTY_SLOTS	g_shell.environ_elements < g_shell.environ_size - 1
+
+
+typedef struct	s_builtins
+{
+	char	*builtin_name;
+	int		(*fct)(char **args);
+}				t_builtins;
 
 typedef struct	s_shell
 {
 	char    **environ;
 	int		environ_size;
+	int		environ_elements;
 	char	**env_path;
 }				t_shell;
 
 extern t_shell	g_shell;
+
 
 int     display_prompt(void);
 int     get_input(char **input);
@@ -43,25 +61,28 @@ int		error(int errnb, char *msg, int ret);
 /*
 ** builtins/
 */
-int				builtin_echo(char **args);
+int		builtin_echo(char **args);
+int		builtin_setenv(char **args);
+int		builtin_clear(char **args);
+int		builtin_exit(char **args);
 
 /*
 ** command/
 */
+int		command_execute_builtin(char *cmd, char **cmd_args);
 int     command_execute_bin(char *cmd, char **cmd_args);
-int     handle_command(char *cmds);
+int     command_handle(char *cmds);
 
 /*
 ** enviroment/
 */
-int		env_setup(char **environ);
+int		env_setup(char **envp);
+int		env_remalloc(int new_size);
 
 /*
 ** shell/
 */
 int     shell_setup(char **envp);
 void	shell_free(void);
-
-
 
 #endif

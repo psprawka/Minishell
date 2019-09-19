@@ -6,13 +6,13 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 18:16:03 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/18 16:10:04 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/19 22:16:53 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int		builtin_echo_env(char *arg)
+static int	builtin_echo_env(char *arg)
 {
 	int		i;
 	int		len;
@@ -28,17 +28,15 @@ static int		builtin_echo_env(char *arg)
 	return ("");
 }
 
-int				builtin_echo(char **args)
+int			builtin_echo(char **args)
 {
 	int		i;
 	bool	is_newline; 
 	
 	if (!args)
 		return (EXIT_FAILURE);
-		
 	is_newline = (args[1] && !ft_strcmp(args[1], "-n"));
 	i = 1 + is_newline;
-	
 	while (args[i])
 	{
 		printf("%s", args[i][0] == '$' ? builtin_echo_env(args[i]) : args[i]);

@@ -6,17 +6,11 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 16:06:53 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/18 18:04:35 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/19 22:25:02 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-typedef struct	s_builtins
-{
-	char	*builtin_name;
-	int		(*fct)(char **args);
-}				t_builtins;
 
 t_builtins	g_builtins[] =
 {
