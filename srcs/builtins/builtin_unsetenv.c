@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_setup.c                                        :+:      :+:    :+:   */
+/*   builtin_unsetenv.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 20:38:32 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/21 21:59:07 by psprawka         ###   ########.fr       */
+/*   Created: 2019/09/20 11:48:37 by psprawka          #+#    #+#             */
+/*   Updated: 2019/09/21 21:59:39 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		env_setup(char **envp)
+int		builtin_unsetenv(char **args)
 {
-	int		i;
-	int		len;
+	int i;
+	int len;
 	
-	i = 0;
-	while (envp[i])
+	i = 0;	
+	len = ft_strlen(args[1]);
+	while (g_shell.environ[i])
 	{
-		len = ft_strlen(envp[i]);
-		if (!(g_shell.environ[i] = ft_strncpy(envp[i], len)))
-		{
-			g_shell.environ[i] = NULL;
-			//ft_2Darr_free(g_shell.environ);
-			return (EXIT_FAILURE);
+		if (!(ft_strncmp(g_shell.environ[i], args[1], len)))  
+        {
+			//free(g_shell.environ[i]);
+			g_shell.environ_elements--;
+			g_shell.environ[i] = g_shell.environ[g_shell.environ_elements];
+			g_shell.environ[g_shell.environ_elements] = NULL;
+			return (EXIT_SUCCESS);
 		}
-		i++;
+        i++;
 	}
-	return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }

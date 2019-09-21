@@ -18,3 +18,6 @@ make
 ./minishell
 ```
 Once in the shell, you can execute the builtins or any other simple command line that works on any other shell. Have fun with my minishell! 
+
+### Resources:
+* https://nature.berkeley.edu/~casterln/tcsh/Builtin_commands.html

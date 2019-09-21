@@ -6,7 +6,7 @@
 #    By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/09 23:21:55 by psprawka          #+#    #+#              #
-#    Updated: 2019/09/17 22:24:19 by psprawka         ###   ########.fr        #
+#    Updated: 2019/09/21 21:43:37 by psprawka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,27 @@ FLAGS	= -g -Wall -Wextra -Werror
 
 HEADERS		= includes/
 SRCS_DIR	= srcs/
+BUILTIN		= builtins/
 COMMAND		= command/
-ENV			= enviroment/
+ENV			= env/
 SHELLL		= shelll/
 
 SRCS = $(SRCS_DIR)main.c \
 		$(SRCS_DIR)input.c \
 		$(SRCS_DIR)tools.c \
-		$(SRCS_DIR)$(COMMAND)command_execute.c \
-		$(SRCS_DIR)$(COMMAND)command_search.c \
-		$(SRCS_DIR)$(COMMAND)handle_commands.c \
+		$(SRCS_DIR)$(BUILTIN)builtin_cd.c \
+		$(SRCS_DIR)$(BUILTIN)builtin_clear.c \
+		$(SRCS_DIR)$(BUILTIN)builtin_echo.c \
+		$(SRCS_DIR)$(BUILTIN)builtin_env.c \
+		$(SRCS_DIR)$(BUILTIN)builtin_exit.c \
+		$(SRCS_DIR)$(BUILTIN)builtin_pwd.c \
+		$(SRCS_DIR)$(BUILTIN)builtin_setenv.c \
+		$(SRCS_DIR)$(BUILTIN)builtin_unsetenv.c \
+		$(SRCS_DIR)$(COMMAND)command_execute_bin.c \
+		$(SRCS_DIR)$(COMMAND)command_execute_builtin.c \
+		$(SRCS_DIR)$(COMMAND)command_handle.c \
+		$(SRCS_DIR)$(ENV)env_print.c \
+		$(SRCS_DIR)$(ENV)env_remalloc.c \
 		$(SRCS_DIR)$(ENV)env_setup.c \
 		$(SRCS_DIR)$(SHELLL)shell_setup.c \
 		$(SRCS_DIR)$(SHELLL)shell_free.c

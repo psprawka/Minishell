@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 20:18:36 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/19 22:27:38 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/21 22:01:54 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int     minishell_loop(void)
         while (cmds[i])
         {
             cmd = ft_strtrim(cmds[i++]);
-            if (handle_command(cmd) == EXIT_FAILURE)
+            if (command_handle(cmd) == EXIT_FAILURE)
                 return (EXIT_FAILURE);
-            free(cmd);
+            //free(cmd);
         }
         display_prompt();
-        ft_2Darr_free(cmds);
+        //ft_2Darr_free(cmds);
     }
     return (EXIT_SUCCESS);
 }
@@ -46,7 +46,7 @@ int     main(int ac, char **av, char **envp)
         env_setup(envp) == EXIT_FAILURE ||
         minishell_loop() == EXIT_FAILURE)
         return (EXIT_FAILURE);
-    shell_free();
+    //shell_free();
     return (EXIT_SUCCESS);
 }
 

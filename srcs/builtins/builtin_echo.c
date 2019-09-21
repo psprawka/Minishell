@@ -6,13 +6,13 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 18:16:03 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/19 22:16:53 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/21 16:49:32 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	builtin_echo_env(char *arg)
+static char	*builtin_echo_env(char *arg)
 {
 	int		i;
 	int		len;
@@ -22,7 +22,7 @@ static int	builtin_echo_env(char *arg)
 	{
 		len = ft_strlen(&(arg[1]));
 		if (ft_strncmp(&(arg[1]), g_shell.env_path[i], len))
-			return (&(g_shell.env_path[len]));
+			return (&(g_shell.env_path[i][len]));
 		i++;
 	}
 	return ("");

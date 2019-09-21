@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 20:23:31 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/19 22:38:23 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/21 21:46:52 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 #define CMD_NAME    cmd_args[0]
 #define ENV_PATH	g_shell.path;
 #define	ENV_EXTENTION	10 
-#define	ENV_EMPTY_SLOTS	g_shell.environ_elements < g_shell.environ_size - 1
+#define	ENV_EMPTY_SLOTS	(g_shell.environ_elements < g_shell.environ_size - 1)
+#define MAX_PATH_LEN 4096
 
 
 typedef struct	s_builtins
@@ -61,28 +62,33 @@ int		error(int errnb, char *msg, int ret);
 /*
 ** builtins/
 */
-int		builtin_echo(char **args);
-int		builtin_setenv(char **args);
+int		builtin_cd(char **args);
 int		builtin_clear(char **args);
+int		builtin_echo(char **args);
+int		builtin_env(char **args);
 int		builtin_exit(char **args);
+int		builtin_pwd(char **args);
+int		builtin_setenv(char **args);
+int		builtin_unsetenv(char **args);
 
 /*
 ** command/
 */
-int		command_execute_builtin(char *cmd, char **cmd_args);
 int     command_execute_bin(char *cmd, char **cmd_args);
+int		command_execute_builtin(char *cmd, char **cmd_args);
 int     command_handle(char *cmds);
 
 /*
 ** enviroment/
 */
-int		env_setup(char **envp);
+int		env_print(void);
 int		env_remalloc(int new_size);
+int		env_setup(char **envp);
 
 /*
 ** shell/
 */
-int     shell_setup(char **envp);
 void	shell_free(void);
+int     shell_setup(char **envp);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 21:31:43 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/18 22:00:24 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/21 16:50:03 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		builtin_env()
+int		builtin_env(char **args)
 {
-	;
+	return (EXIT_SUCCESS);
 }

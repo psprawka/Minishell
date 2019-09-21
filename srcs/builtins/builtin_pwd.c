@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_setup.c                                        :+:      :+:    :+:   */
+/*   builtin_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/10 20:38:32 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/21 21:59:07 by psprawka         ###   ########.fr       */
+/*   Created: 2019/09/21 15:22:26 by psprawka          #+#    #+#             */
+/*   Updated: 2019/09/21 16:05:19 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		env_setup(char **envp)
+int		builtin_pwd(char **args)
 {
-	int		i;
-	int		len;
-	
-	i = 0;
-	while (envp[i])
-	{
-		len = ft_strlen(envp[i]);
-		if (!(g_shell.environ[i] = ft_strncpy(envp[i], len)))
-		{
-			g_shell.environ[i] = NULL;
-			//ft_2Darr_free(g_shell.environ);
-			return (EXIT_FAILURE);
-		}
-		i++;
-	}
+	char	buf[MAX_PATH_LEN];
+
+	printf("%s\n", getcwd(buf, MAX_PATH_LEN));
 	return (EXIT_SUCCESS);
 }
