@@ -7,7 +7,7 @@ This project is an introdution to a project called 42sh - a fully functional and
 </br></br>
 
 # Minishell - what does it contain?
-Minishell is very simple and does not have to contain complex features like key-bindings or piping. For this project, I implemented: `cd`, `setenv`, `usetenv`, `env`, `echo`, `exit`, as well as `auto completion`, `history` and `multiple commands management`.
+Minishell is very simple and does not have to contain complex features like key-bindings or piping. For this project, I implemented: `cd`, `setenv`, `usetenv`, `env`, `echo`, `exit`, `pwd`, `clear` as well as `auto completion`, `history` and `multiple commands management`.
 </br></br>
 
 # How to run Minishell?
