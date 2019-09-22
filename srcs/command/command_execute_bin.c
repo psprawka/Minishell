@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 18:38:36 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/21 21:59:57 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/22 21:45:40 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ static char *command_search_bins(char *cmd)
     while (g_shell.env_path[i])
     {
         if ((bins = opendir(g_shell.env_path[i])) == NULL)
-        {
-            error(3, "[command_search_bins]", EXIT_FAILURE);
             return (NULL);
-        }
         while ((dp = readdir(bins)) != NULL)
         {
             if (ft_strcmp(cmd, dp->d_name) == 0)
@@ -44,7 +41,7 @@ static int  find_path_execute(char **path, char *cmd)
     int     path_bin_len;
     
     if ((path_bin = command_search_bins(cmd)) == NULL)
-        return (error(2, cmd, EXIT_FAILURE));
+        return (EXIT_FAILURE);
     path_bin_len = ft_strlen(path_bin);
     if (!((*path) = (char *)malloc(path_bin_len + ft_strlen(cmd))))
         return (error(0, "[find_path_execute]", EXIT_FAILURE));
@@ -66,14 +63,13 @@ int         command_execute_bin(char *cmd, char **cmd_args)
         return (EXIT_FAILURE);
     if (pid == 0)
     {
-        if (find_path_execute(&path, cmd) == EXIT_FAILURE ||
+        if (find_path_execute(&path, cmd) == EXIT_FAILURE || 
             access(path, F_OK) == EXIT_FAILURE || 
             execve(path, cmd_args, g_shell.environ) == -1)
-            return (error(0, "[command_execute_bin]", EXIT_FAILURE));
-        //free(path);
+            return (EXIT_FAILURE);
+        free(path);
     }
     else
         waitpid(pid, 0, 0);
-    //ft_2Darr_free(cmd_args);
     return (EXIT_SUCCESS);
 }

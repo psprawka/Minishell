@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 21:16:02 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/17 21:27:27 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/22 19:15:06 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char    **parse_input(char *input)
     char    **cmds;
     
     if (!input)
-        return (NULL);//(error(66, "meh", true));
+        return (NULL);
     cmds = ft_strsplit_chr(input, ';');
     return (cmds);    
 }

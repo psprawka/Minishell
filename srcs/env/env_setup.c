@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 20:38:32 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/21 21:59:07 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/22 20:41:22 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		env_setup(char **envp)
 		if (!(g_shell.environ[i] = ft_strncpy(envp[i], len)))
 		{
 			g_shell.environ[i] = NULL;
-			//ft_2Darr_free(g_shell.environ);
+			ft_2Darr_free(g_shell.environ);
 			return (EXIT_FAILURE);
 		}
 		i++;

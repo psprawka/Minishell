@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/20 18:35:16 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/17 21:26:57 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/22 10:08:43 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ char			*ft_convert_binary(unsigned long int nb);
 */
 int 			ft_2Darr_size(char **arr);
 void			ft_2Darr_free(char **arr);
+void			ft_2Darr_print(char **arr, char *ink);
 
 /*
 **	string/

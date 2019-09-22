@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 11:48:37 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/21 21:59:39 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/22 20:41:47 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		builtin_unsetenv(char **args)
 	{
 		if (!(ft_strncmp(g_shell.environ[i], args[1], len)))  
         {
-			//free(g_shell.environ[i]);
+			free(g_shell.environ[i]);
 			g_shell.environ_elements--;
 			g_shell.environ[i] = g_shell.environ[g_shell.environ_elements];
 			g_shell.environ[g_shell.environ_elements] = NULL;

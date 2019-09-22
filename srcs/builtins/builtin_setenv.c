@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 19:27:27 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/21 21:59:34 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/22 20:41:40 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	builtin_setenv_add(char **args)
 	{
 		if (!(ft_strncmp(g_shell.environ[i], args[1], len)))  
         {
-			//free(g_shell.environ[i]);
+			free(g_shell.environ[i]);
 			g_shell.environ[i] = ft_strdup(args[i]);
 			return ;
 		}

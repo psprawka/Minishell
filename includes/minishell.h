@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/08 20:23:31 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/21 21:46:52 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/22 21:28:05 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct	s_shell
 	int		environ_size;
 	int		environ_elements;
 	char	**env_path;
+	bool	exit;
 }				t_shell;
 
 extern t_shell	g_shell;

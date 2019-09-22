@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 16:06:53 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/21 21:59:51 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/22 21:48:03 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ int		command_execute_builtin(char *cmd, char **cmd_args)
 	{
 		if (!ft_strcmp(cmd, g_builtins[i].builtin_name))
 		{
-			g_builtins[i].fct(cmd_args);
-			//ft_2Darr_free(cmd_args);
+			if (g_builtins[i].fct(cmd_args) == -1)
+				return (EXIT_FAILURE);
+			ft_2Darr_free(cmd_args);
 			return (EXIT_SUCCESS);
 		}
 		i++;
 	}
-	//ft_2Darr_free(cmd_args);
 	return (EXIT_FAILURE);
 }

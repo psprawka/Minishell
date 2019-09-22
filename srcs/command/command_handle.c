@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 21:13:11 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/19 22:25:49 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/22 21:46:13 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int     command_handle(char *cmd)
         return (EXIT_SUCCESS);
     if (command_execute_bin(CMD_NAME, cmd_args) == EXIT_FAILURE)   
         return (error(2, CMD_NAME, true));
+    ft_2Darr_free(cmd_args);
     return (EXIT_SUCCESS);
 }

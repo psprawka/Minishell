@@ -6,7 +6,7 @@
 /*   By: psprawka <psprawka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 21:13:55 by psprawka          #+#    #+#             */
-/*   Updated: 2019/09/21 21:57:33 by psprawka         ###   ########.fr       */
+/*   Updated: 2019/09/22 09:47:02 by psprawka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int			error(int errnb, char *msg, int ret)
 	if (errnb == 1)
 		printf("%sError: %s%s\n", RED, msg, NORMAL);
     else if (errnb == 2)
-        printf("%sError: %s: command not found%s\n", RED, msg, NORMAL);
+        printf("%sminishell: %s: command not found%s\n", RED, msg, NORMAL);
     else if (errnb == 3)
         printf("Usage: ./42sh\n");
 	//else if (error == 4)
